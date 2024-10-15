@@ -106,4 +106,22 @@ fun main() {
         println(result.getOrElse { it.message })
     }
     println()
+
+    println(getNOD(14, 21))
+    println(getNOD(1949154, 405490))
+    println()
+}
+
+fun getNOD(x: Int, y: Int): Int {
+    var a = x
+    var b = y
+    if (a < b) {
+        a = b.also { b = a }  // Эквивалентно записи a, b = b, a из Python
+    }
+
+    while (b != 0) {
+        a = b.also { b = a % b }
+    }
+
+    return a
 }
